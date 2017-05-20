@@ -4,10 +4,13 @@ package com.github.minyk.dcos.marathon.eventbus.event.deployment;
 import com.google.gson.annotations.SerializedName;
 import mesosphere.marathon.client.model.v2.App;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class MarathonDeploymentEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonDeploymentEvent.class);
 
     public static final String DEPLOYMENT_INFO = "deployment_info";
     public static final String DEPLOYMENT_STEP_SUCCESS = "deployment_step_success";

@@ -3,11 +3,14 @@ package com.github.minyk.dcos.marathon.eventbus.event.status;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.List;
 
 public class MarathonStatusUpdateEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonStatusUpdateEvent.class);
     public static final String STATUS_UPDATE_EVENT = "status_update_event";
 
     /***
@@ -35,6 +38,7 @@ public class MarathonStatusUpdateEvent {
     public String version;
 
     public static MarathonStatusUpdateEvent build(String json) {
+        logger.debug("Create event from " + json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(json, MarathonStatusUpdateEvent.class);
     }

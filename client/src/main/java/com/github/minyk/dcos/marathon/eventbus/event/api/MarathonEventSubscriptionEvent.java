@@ -3,10 +3,13 @@ package com.github.minyk.dcos.marathon.eventbus.event.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 public class MarathonEventSubscriptionEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonEventSubscriptionEvent.class);
     public static final String SUBSCRIBE_EVENT = "subscribe_event";
     public static final String UNSUBSCRIBE_EVENT = "unsubscribe_event";
 
@@ -25,6 +28,7 @@ public class MarathonEventSubscriptionEvent {
     public String callbackUrl;
 
     public static MarathonEventSubscriptionEvent build(String json) {
+        logger.debug("Create event from " + json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(json, MarathonEventSubscriptionEvent.class);
     }

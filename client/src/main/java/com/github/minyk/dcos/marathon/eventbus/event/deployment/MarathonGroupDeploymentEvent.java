@@ -3,10 +3,13 @@ package com.github.minyk.dcos.marathon.eventbus.event.deployment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 public class MarathonGroupDeploymentEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonGroupDeploymentEvent.class);
     public static final String GROUP_CHANGE_SUCCESS = "group_change_success";
     public static final String GROUP_CHANGE_FAILED = "group_change_failed";
 
@@ -26,6 +29,7 @@ public class MarathonGroupDeploymentEvent {
     public String reason;
 
     public static MarathonGroupDeploymentEvent build (String json) {
+        logger.debug("Create event from " + json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(json, MarathonGroupDeploymentEvent.class);
     }

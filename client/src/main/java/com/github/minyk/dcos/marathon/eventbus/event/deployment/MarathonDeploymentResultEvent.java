@@ -3,10 +3,13 @@ package com.github.minyk.dcos.marathon.eventbus.event.deployment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 public class MarathonDeploymentResultEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonDeploymentResultEvent.class);
     public static final String DEPLOYMENT_SUCCESS = "deployment_success";
     public static final String DEPLOYMENT_FAILED = "deployment_failed";
 
@@ -28,6 +31,7 @@ public class MarathonDeploymentResultEvent {
     public String id;
 
     public static MarathonDeploymentResultEvent build(String json) {
+        logger.debug("Create event from " + json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(json, MarathonDeploymentResultEvent.class);
     }

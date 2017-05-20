@@ -3,9 +3,11 @@ package com.github.minyk.dcos.marathon.eventbus.event.framework;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MarathonFrameworkMessageEvent {
-
+    private static final Logger logger = LoggerFactory.getLogger(MarathonFrameworkMessageEvent.class);
     public static final String FRAMEWORK_MESSAGE_EVENT = "framework_message_event";
 
     /***
@@ -25,6 +27,7 @@ public class MarathonFrameworkMessageEvent {
     public String message;
 
     public static MarathonFrameworkMessageEvent build(String json) {
+        logger.debug("Create event from " + json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(json, MarathonFrameworkMessageEvent.class);
     }
