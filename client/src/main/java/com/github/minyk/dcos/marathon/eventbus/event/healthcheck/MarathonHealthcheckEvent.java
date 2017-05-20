@@ -5,10 +5,13 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import mesosphere.marathon.client.utils.ModelUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 public class MarathonHealthcheckEvent {
+    private static final Logger logger = LoggerFactory.getLogger(MarathonHealthcheckEvent.class);
 
     @Expose(serialize = false, deserialize = false)
     public static final String ADD_HEALTH_CHECK_EVENT = "add_health_check_event";
@@ -64,6 +67,7 @@ public class MarathonHealthcheckEvent {
 
     public static MarathonHealthcheckEvent build(String json) {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").serializeNulls().create();
+        logger.debug("Create event from: " + json);
         return gson.fromJson(json, MarathonHealthcheckEvent.class);
     }
 
