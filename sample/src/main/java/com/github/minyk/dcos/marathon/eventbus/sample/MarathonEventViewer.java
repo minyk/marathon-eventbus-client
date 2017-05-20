@@ -1,7 +1,6 @@
 package com.github.minyk.dcos.marathon.eventbus.sample;
 
-import com.github.minyk.dcos.marathon.eventbus.MarathonEventBus;
-import com.github.minyk.dcos.marathon.eventbus.MarathonEventHandler;
+import com.github.minyk.dcos.marathon.eventbus.MarathonEventBusListener;
 import com.launchdarkly.eventsource.EventSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ public class MarathonEventViewer {
     private volatile EventSource es;
 
     public static void main(String[] args) {
-        MarathonEventBus meb = new MarathonEventBus("http://marathon.mesos/marathon", new MarathonEventHandler());
+        MarathonEventBusListener meb = new MarathonEventBusListener("http://marathon.mesos/marathon", new MarathonEventHandler());
         meb.start();
     }
 }

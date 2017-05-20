@@ -1,4 +1,4 @@
-package com.github.minyk.dcos.marathon.eventbus;
+package com.github.minyk.dcos.marathon.eventbus.sample;
 
 import com.github.minyk.dcos.marathon.eventbus.event.deployment.MarathonDeploymentResultEvent;
 import com.github.minyk.dcos.marathon.eventbus.event.healthcheck.MarathonHealthcheckEvent;
