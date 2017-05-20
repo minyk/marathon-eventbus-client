@@ -2,7 +2,7 @@ package com.github.minyk.dcos.marathon.eventbus.event.framework;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import mesosphere.marathon.client.utils.ModelUtils;
+import mesosphere.client.common.ModelUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
