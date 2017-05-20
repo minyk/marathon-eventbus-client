@@ -14,6 +14,7 @@ public class MarathonEventViewer {
 
     public static void main(String[] args) {
         MarathonEventBusListener meb = new MarathonEventBusListener("http://marathon.mesos/marathon", new MarathonEventHandler());
+        logger.info("Marathon Event Viewer starting...");
         meb.start();
     }
 }
