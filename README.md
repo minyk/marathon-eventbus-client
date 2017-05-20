@@ -28,6 +28,11 @@ $ mvn clean package install
 $ java -jar sample/target/marathon-eventbus-viewer-0.1-jar-with-dependencies.jar 
 ```
 
+# Todos
+
+[ ] Authentication for Marathon.
+[ ] Provide proper configuration management method.
+
 # Acknowledgement
 * This program is heavily relied on [okhttp-eventsource](https://github.com/launchdarkly/okhttp-eventsource). Thanks a lot!
 * Marathon related JSON schema (like app definition) is defined in [mesosphere/marathon-client](https://github.com/mesosphere/marathon-client).
