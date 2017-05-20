@@ -1,6 +1,8 @@
 package com.github.minyk.dcos.marathon.eventbus.event.deployment;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import mesosphere.marathon.client.model.v2.App;
 import mesosphere.marathon.client.utils.ModelUtils;
@@ -57,6 +59,12 @@ public class MarathonDeploymentEvent {
     public Plan plan;
 
     public CurrentStep currentStep;
+
+    public static MarathonDeploymentEvent build(String json) {
+        logger.debug("Create event from " + json);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(json, MarathonDeploymentEvent.class);
+    }
 
     @Override
     public String toString() {
